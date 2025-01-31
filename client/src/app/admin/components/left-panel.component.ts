@@ -18,7 +18,7 @@ import { TranslateModule } from '@ngx-translate/core';
       <hr>
       <ul class="nav nav-pills flex-column mb-auto" *ngIf="isAdmin">
           <li class="nav-item">
-            <a routerLink="/admin/transactions" class="nav-link text-white" routerLinkActive="active" aria-current="page">
+            <a routerLink="/admin/tables" class="nav-link text-white" routerLinkActive="active" aria-current="page">
               <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg> -->
               Tables
             </a>

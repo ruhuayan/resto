@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { ParcelActions } from '../state/parcel.actions';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { isValidPickupAddressSelector, languageSelector } from '../state/parcel.selectors';
+// import { Store } from '@ngrx/store';
+// import { ParcelActions } from '../state/parcel.actions';
+// import { Router } from '@angular/router';
+// import { Observable } from 'rxjs';
+// import { isValidPickupAddressSelector, languageSelector } from '../state/parcel.selectors';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../components/modal/modal.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
