@@ -1,0 +1,26 @@
+<header class="p-3 bg-dark text-white">
+  <div class="header-container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><a class="nav-link px-2 text-white" (click)="add()" *ngIf="canAdd">+ Add</a></li>
+        <!-- <li><a class="nav-link px-2 text-secondary">Settings</a></li> -->
+      </ul>
+
+      <div class="text-end d-flex">
+        <div><button type="button" class="btn btn-outline-light me-2 text-uppercase" (click)="changeLang()">{{ language }}</button></div>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="assets/images/user.svg" alt="" width="32" height="32" class="rounded-circle me-2">
+            <strong>{{ username }} </strong>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" routerLink="/admin/settings" routerLinkActive="active">Settings</a></li>
+            <li><a class="dropdown-item" routerLink="/admin/profile" routerLinkActive="active">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="onLogout()">{{ 'admin.SignOut' | translate }}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

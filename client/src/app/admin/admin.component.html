@@ -1,0 +1,17 @@
+<div class="container">
+	<app-left-panel [role]="(user$ | async)?.role"></app-left-panel>
+	<main>
+		<app-navbar
+			[user]="user$ | async"
+			[lang]="lang$ | async"
+      [path]="path"
+			(logout)="logout()"
+			(selectLang)="selectLang($event)"
+      (addNew)="addNew()"
+		>
+		</app-navbar>
+		<div class="content">
+			<router-outlet />
+		</div>
+	</main>
+</div>

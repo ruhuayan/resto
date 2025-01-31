@@ -1,0 +1,173 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+body {
+  font: 1rem/1.5 var(--bs-font-sans-serif);
+  background-color: #eee;
+	width: 100%;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+
+  &.loading::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bs-light);
+    opacity: 0.5;
+    z-index: 1;
+  }
+  &.loading::after {
+    content: " ";
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1001;
+    left: 0;
+    right: 0;
+    top: 300px;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid var(--bs-primary);
+    border-color: var(--bs-primary) transparent var(--bs-primary) transparent;
+    animation: loader 1.2s linear infinite;
+  }
+}
+
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #757575;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+.button {
+  background: red;
+  border: 1px solid red;
+  color: var(--bs-white);
+  margin-left: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 60px;
+  border-radius: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 6px 12px;
+  overflow: auto;
+}
+
+.logo_dhl {
+	width: 400px;
+	// background-color: #fc0;
+	padding: 6px 0;
+}
+
+.form-control::placeholder {
+  color: var(--bs-gray-500);
+}
+
+.ng-invalid.ng-touched,
+.ng-invalid.ng-dirty {
+	border-color: var(--bs-danger);
+
+  &::placeholder {
+    color: var(--bs-danger);
+  }
+
+  &:is(select) {
+    color: var(--bs-danger);
+  }
+}
+
+.alert {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: .5em;
+  transform: translate(-50%, 0);
+  max-width: 500px;
+}
+
+.rate-next {
+  margin-left: 16.66666667%;
+  width: 16.66666667%;
+}
+
+.container.admin {
+  max-width: 100%;
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1366px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (min-width: 1145px) {
+  form .verification:not(.packages) {
+    margin-top: -1rem;
+  }
+}
+
+@media only screen and (max-width: 864px) {
+  .container {
+    min-height: 100vh;
+  }
+  app-header {
+    margin-top: 1rem;
+  }
+  .page-title {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .vertical-line {
+    display: none;
+  }
+
+  .justify-content-md-between {
+    justify-content: space-between !important;
+  }
+
+  .rate-next {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x)* .5);
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    margin: 2rem 0 1rem 0;
+    justify-content: flex-end;
+  }
+  app-modal .modal-dialog {
+    margin-top: 12rem;
+  }
+}

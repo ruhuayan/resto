@@ -1,0 +1,172 @@
+<form class="row p-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="col-md-6">
+		<app-destination-header prefix="{{ 'common.From' | translate }}" [domestic]="true"></app-destination-header>
+		<div class="row g-3" formGroupName="shipperDetails">
+			<div class="col-6">
+				<app-dropdown placeholder="{{ 'common.postalCode' | translate }}" 
+					[options]="shipperPostalCodes"	
+					formControlName="postalCode"
+					[debounce]="600"
+					[required]="true"
+					(valueChange)="onPostalCodeChanged($event, FromEnum.SHIPPER)"
+					(select)="onAddressSelect($event, 'postalCode', FromEnum.SHIPPER)"
+				><span class="input-group-text" id="basic-addon1"><img src="assets/images/location.svg"/></span></app-dropdown>
+			</div>
+			<div class="col-md-6">
+				<app-dropdown placeholder="{{ 'common.City' | translate }}"
+					formControlName="cityName"
+					[options]="shipperCities"	
+					[required]="true"
+					[debounce]="600"
+					(valueChange)="onCityNameChanged($event, FromEnum.SHIPPER)"
+					(select)="onAddressSelect($event, 'cityName', FromEnum.SHIPPER)"
+				><span class="input-group-text" id="basic-addon1"><img src="assets/images/buildings.svg"/></span></app-dropdown>
+			</div>
+			<div class="col-md-12 input-group">
+        <span class="input-group-text"><img src="assets/images/flag.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="provinceCode"
+					placeholder="Province"
+					aria-label="Province"
+          maxlength="35"
+					appTrimText
+				/>
+			</div>
+			<div class="col-md-12">
+				<label>* {{ 'common.Required' | translate }}</label>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6" formGroupName="receiverDetails">
+		<app-destination-header prefix="{{ 'common.To' | translate }}" [domestic]="domestic"></app-destination-header>
+		<div class="row g-3">
+			<div class="col-12" *ngIf="!domestic">
+				<app-dropdown placeholder="{{ 'common.Country' | translate }}" 
+					[options]="countries"	
+					formControlName="countryCode" 
+					[required]="true"
+					[readonly]="isCountryReadonly"
+					(select)="onCountrySelect($event)"
+          ><span class="input-group-text" id="basic-addon1"><img src="assets/images/globe-americas.svg"/></span></app-dropdown>
+			</div>
+			<div class="col-6">
+				<app-dropdown placeholder="{{ 'common.postalCode' | translate }}" 
+					[options]="postalCodes"	
+					formControlName="postalCode"
+					[debounce]="600"
+					[required]="requirePostalCode"
+					(valueChange)="onPostalCodeChanged($event, FromEnum.RECEIVER)"
+					(select)="onAddressSelect($event, 'postalCode', FromEnum.RECEIVER)"
+          ><span class="input-group-text" id="basic-addon1"><img src="assets/images/location.svg"/></span></app-dropdown>
+			</div>
+			<div class="col-md-6">
+				<app-dropdown placeholder="{{ 'common.City' | translate }}"
+					formControlName="cityName"
+					[options]="cities"	
+					[required]="true"
+					[debounce]="600"
+					(valueChange)="onCityNameChanged($event, FromEnum.RECEIVER)"
+					(select)="onAddressSelect($event, 'cityName', FromEnum.RECEIVER)"
+				><span class="input-group-text" id="basic-addon1"><img src="assets/images/buildings.svg"/></span></app-dropdown>
+			</div>
+			<div class="col-md-12 input-group">
+        <span class="input-group-text"><img src="assets/images/flag.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="provinceName"
+					placeholder="Province"
+					aria-label="Province"
+          maxlength="35"
+					appTrimText
+				/>
+			</div>
+		</div>
+	</div>
+	<ng-container *ngIf="isParcelPackage">
+		<div class="col-md-6">
+			<img src="assets/images/package.svg" width="80%" alt="Package dimension">
+		</div>
+		<div class="col-md-6 packages">
+			<div formArrayName="packages">
+				<div class="row g-3 p-2 mt-3 package"
+					*ngFor="let item of packages; let i = index; let isLast=last; trackBy: trackByIndex"
+					formGroupName="{{i}}">
+				<div class="col-md-5">
+					<label class="form-label d-block h5">{{ 'rateRequest.Weight' | translate }} *</label>
+					<input
+						class="form-control d-inline w-75"
+						type="number"
+						formControlName="weight"
+						min="1"
+						max="9999"
+						placeholder="Weight"
+						aria-label="Weight"
+						required
+					/><div class="px-1 d-inline h5">lbs</div>
+				</div>
+				<div class="col-md-5">
+					<label class="form-label d-block h5"
+						>{{ 'rateRequest.Length' | translate }} *
+					</label>
+					<input
+						class="form-control d-inline w-75"
+						type="number"
+						formControlName="length"
+						placeholder="Length"
+						min="1"
+						max="9999"
+						aria-label="Length"
+						required
+					/><div class="px-1 d-inline h5">ln</div>
+				</div>
+				<div class="col-md-5">
+					<label class="form-label d-block h5">{{ 'rateRequest.Width' | translate }} *</label>
+					<input
+						class="form-control d-inline w-75"
+						type="number" 
+						formControlName="width"
+						placeholder="Width"
+						min="1"
+						max="9999"
+						aria-label="Width"
+						required
+					/><div class="px-1 d-inline h5">ln</div>
+				</div>
+				<div class="col-md-5">
+					<label class="form-label d-block h5">{{ 'rateRequest.Height' | translate }} *</label>
+					<input
+						class="form-control d-inline w-75"
+						type="number"
+						formControlName="height"
+						min="1"
+						max="9999"
+						placeholder="Height"
+						aria-label="Height"
+						required
+					/><div class="px-1 d-inline h5">ln</div>
+				</div>
+				<div class="col-md-2" *ngIf="!rateResponse">
+					<div class="col-md-6" *ngIf="!isLast">
+						<div class="text-center fs-4" role="button" (click)="removePackage(i)">-</div>
+					</div>
+					<div class="col-md-6" *ngIf="isLast">
+						<div class="text-center fs-4" role="button" (click)="addPackage()">+</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</ng-container>
+	<div class="col-md-12 d-flex mt-3 justify-content-end" *ngIf="!rateResponse">
+		<button
+			type="submit"
+			class="btn btn-danger button px-4"
+			[disabled]="!form.valid"
+		>
+		{{ 'rateRequest.GetRates' | translate }}
+		</button>
+	</div>
+</form>

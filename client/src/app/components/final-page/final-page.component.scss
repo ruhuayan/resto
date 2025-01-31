@@ -1,0 +1,23 @@
+
+.guide-card{
+  position: relative;
+  margin: 1.5rem 2rem auto;
+  border: 2px solid rgb(168, 168, 168);
+  box-shadow: 5px 5px 5px  rgb(168, 168, 168);
+}
+.span-number{
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: -1rem;
+  left: -2rem;
+  font-weight: 600;
+  border: 2px solid rgb(168, 168, 168);
+  background-color: white;
+  line-height: 3.6rem;
+}
+
+.span-card img{
+  width: 100%;
+  min-height: 200px;
+}

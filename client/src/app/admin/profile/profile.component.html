@@ -1,0 +1,9 @@
+<div class="card">
+	<div class="card-header">{{ 'profile.ChangePassword' | translate }}</div>
+	<div class="card-body">
+		<app-change-password-form
+			[user]="(user$ | async)"
+			(submitForm)="onSubmit($event)"
+		/>
+	</div>
+</div>

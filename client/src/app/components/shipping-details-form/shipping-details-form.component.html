@@ -1,0 +1,232 @@
+<form class="row p-2" [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="col-md-6">
+		<app-destination-header prefix="{{ 'common.From' | translate }}" [domestic]="true"></app-destination-header>
+		<div class="row g-3" formGroupName="shipperDetails">
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/person-circle.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="fullName"
+					placeholder="{{ 'shippingDetails.shipper.fullName' | translate }} *"
+					aria-label="Your Name"
+					maxlength="70"
+          required
+					appTrimText
+				/>
+			</div>
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/house-door.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="addressLine1"
+					placeholder="{{ 'shippingDetails.shipper.addressLine1' | translate }} *"
+					aria-label="Your Home Address"
+          maxlength="45"
+          required
+					appTrimText
+				/>
+			</div>
+			<div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/house-door.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="addressLine2"
+					placeholder="{{ 'shippingDetails.shipper.addressLine2' | translate }}"
+					aria-label="Your Home Address Line 2"
+          maxlength="45"
+					appTrimText
+				/>
+			</div>
+			<div class="col-6">
+        <div  class="input-group">
+          <span class="input-group-text"><img src="assets/images/location.svg"/></span>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="postalCode"
+            placeholder="{{ 'common.postalCode' | translate }} *"
+            aria-label="Postal Code"
+            required
+            readonly
+          />
+        </div>
+			</div>
+      <div class="col-6">
+        <div class="input-group">
+          <span class="input-group-text"><img src="assets/images/buildings.svg"/></span>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cityName"
+            placeholder="{{ 'shippingDetails.shipper.cityName' | translate }} *"
+            aria-label="Your City"
+            required
+            readonly
+          />
+      </div>
+			</div>
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/telephone.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="phone"
+					placeholder="{{ 'shippingDetails.shipper.phone' | translate }} *"
+					aria-label="Your Phone Number"
+					required
+					maxlength="13"
+					appMask="(000)000-0000"
+				/>
+			</div>
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/letter.svg"/></span>
+				<input
+					class="form-control"
+					type="email"
+					pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+					formControlName="email"
+					placeholder="{{ 'shippingDetails.shipper.email' | translate }} *"
+					aria-label="Your Email (for tracking #)"
+					maxlength="70"
+					appTrimText
+					required
+				/>
+			</div>
+			<div class="col-md-12">
+				<label>* {{ 'common.Required' | translate }}</label>
+			</div>
+		</div>
+	</div>
+  <div class="col-md-6">
+		<app-destination-header prefix="{{ 'common.To' | translate }}" [domestic]="domestic"></app-destination-header>
+		<div class="row g-3" formGroupName="receiverDetails">
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/person-circle.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="fullName"
+					placeholder="{{ 'shippingDetails.receiver.fullName' | translate }} *"
+					aria-label="Recipient Name"
+          maxlength="70"
+          required
+					appTrimText
+				/>
+			</div>
+			<div class="col-12" *ngIf="!domestic">
+				<app-dropdown placeholder="{{ 'shippingDetails.receiver.countryCode' | translate }}" 
+					[options]="countries"	
+					formControlName="countryCode" 
+					[required]="true"
+          [readonly]="true"
+          ><span class="input-group-text" id="basic-addon1"><img src="assets/images/globe-americas.svg"/></span></app-dropdown>
+			</div>
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/map.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="addressLine1"
+					placeholder="{{ 'shippingDetails.receiver.addressLine1' | translate }} *"
+					aria-label="Shipping Address"
+          required
+					maxlength="45"
+					appTrimText
+				/>
+			</div>
+			<div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/map.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="addressLine2"
+					placeholder="{{ 'shippingDetails.receiver.addressLine2' | translate }}"
+					aria-label="Shipping Address Line 2"
+					maxlength="45"
+					appTrimText
+				/>
+			</div>
+      <div class="col-6">
+        <div class="input-group">
+          <span class="input-group-text"><img src="assets/images/flag.svg"/></span>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="provinceName"
+            placeholder="Province"
+            aria-label="Province"
+            maxlength="45"
+            readonly
+          />
+        </div>
+			</div>
+      <div class="col-6">
+        <div class="input-group">
+          <span class="input-group-text"><img src="assets/images/buildings.svg"/></span>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="cityName"
+            placeholder="{{ 'common.City' | translate }} *"
+            aria-label="Shipping City"
+            required="true"
+            readonly
+          />
+        </div>
+			</div>
+			<div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/location.svg"/></span>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="postalCode"
+					placeholder="{{ 'common.postalCode' | translate }} *"
+					aria-label="Postal Code"
+          required="true"
+          readonly
+				/>
+			</div>
+      <div class="col-12 input-group">
+        <span class="input-group-text"><img src="assets/images/telephone.svg"/></span>
+				<input
+					*ngIf="!isUsOrCa"
+					class="form-control"
+					type="text"
+					formControlName="phone"
+					placeholder="{{ 'shippingDetails.receiver.phone' | translate }} *"
+					aria-label="Phone"
+          required
+					pattern="^[0-9]*$"
+					maxlength="45"
+					appTrimText
+				/>
+				<input
+					*ngIf="isUsOrCa"
+					class="form-control"
+					type="text"
+					formControlName="phone"
+					placeholder="{{ 'shippingDetails.receiver.phone' | translate }} *"
+					aria-label="Phone Number(recipient)"
+					required
+					maxlength="13"
+					appMask="(000)000-0000"
+				/>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<app-terms formControlName="accept" *ngIf="!isParcelPackage" />
+	</div>
+	<div class="offset-md-2 col-md-4 d-flex justify-content-end align-items-end" [ngClass]="{'pt-4': isParcelPackage}">
+		<button
+			type="submit"
+			class="btn btn-danger btn-lg w-50 rounded-pill"
+			[disabled]="!form.valid"
+		>
+			{{ 'common.Next' | translate }}
+		</button>
+	</div>
+</form>

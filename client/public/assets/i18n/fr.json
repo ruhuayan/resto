@@ -1,0 +1,131 @@
+{
+  "common": {
+    "Required": "Informations requises",
+    "postalCode": "Code Postal",
+    "City": "Ville",
+    "Country": "Pays",
+    "From": "De",
+    "To": "À",
+    "Close": "Fermer",
+    "Next": "Suivant"
+  },
+  "login": {
+    "username": "Nom d'usager",
+    "password": "Mot de passe",
+    "signin": "Connexion"
+  },
+  "profile": {
+    "ChangePassword": "Changer le mot de passe",
+    "username": "Nom d'usager",
+    "OldPassword": "Ancien mot de passe",
+    "NewPassword": "Nouveau mot de passe",
+    "Save": "Save"
+  },
+  "shipmentType" : {
+    "select": "Choisir le type d'envoie",
+    "envelop": "ENVELOPPE",
+    "package": "COLIS",
+    "docuOnly": "Document uniquement"
+  },
+  "destination": {
+    "select": "Choisir Destination",
+    "USA": "É.-U."
+  },
+  "rateRequest": {
+    "title": "Tarifs d'expédition",
+    "Weight": "Poids",
+    "Width": "Largeur",
+    "Height": "Hauteur",
+    "Length": "Longueur",
+    "GetRates": "Obtenez Tarif",
+    "Verification": "Entrer le code de vérification *",
+    "Reset": "Reset",
+    "Next": "Next"
+  },
+  "rateBox": {
+    "Estimated": "Temps de transit approximatif",
+    "Days": "Jours"
+  },
+  "shippingDetails": {
+    "title": "Détails d'expédition",
+    "shipper": {
+      "fullName": "Votre nom",
+      "addressLine1": "Votre adresse, ligne 1",
+      "addressLine2": "Votre adresse, ligne 2",
+      "cityName": "Votre ville",
+      "phone": "Votre numéro de téléphone",
+      "email": "Votre courriel"
+    },
+    "receiver": {
+      "fullName": "Nom du destinataire",
+      "countryCode": "Pays du destinataire",
+      "addressLine1": "Adresse du destinataire, ligne 1",
+      "addressLine2": "Adresse du destinataire, ligne 2",
+      "phone": "Numéro de téléphone (destinataire)"
+    }
+  },
+  "customsInvoice": {
+    "title": "Facture de douane",
+    "ParcelCurrentValue": "Valeur actuelle du colis",
+    "Quantity": "Quantité",
+    "Where": "Où l'article a-t-il été fabriqué",
+    "ProductDescription": "Description du produit (soyez précis sur le contenu pour les douanes)",
+    "WhatIsReason": "Quelle est la raison de l'exportation",
+    "PressForOptions": "Appuyez pour les options",
+    "Remove": "Retirer",
+    "Add": "Ajouter un article",
+    "TotalValue": "Valeur totale",
+    "PressTheButton": "Appuyez sur le bouton ci-dessous",
+    "Iconfirm": "Je confirme avoir lu et compris les deux conditions générales."
+  },
+  "payment": {
+    "AcceptPay": "Accepter & payer",
+    "SecureYourRate": "Sécurisez votre tarif",
+    "note": "Les prix DHL peuvent changer toutes les 10 minutes. Terminez votre paiement pour sécuriser votre tarif.",
+    "HappyClients": "Clients satisfaits",
+    "SafeTransaction": "Transaction sécurisée",
+    "SecureShipment": "Expédition sécurisée",
+    "PleaseUse": "Veuillez utiliser le distributeur automatique de paiement",
+    "located": "situé à votre droite",
+    "KindlyAttach": "Veuillez coller la première étiquette sur l'envoi",
+    "andRetain": "et conservez la deuxième étiquette pour vos disques",
+    "Complete": "Compléter"
+  },
+  "shipment": {
+    "ShipmentTracking": "Numéro de suivi de l'expédition",
+    "envelope_1": "Insérez votre document dans l'enveloppe",
+    "envelope_2": "Retirez le sceau pour protéger vos documents",
+    "envelope_3": "Placez l'étiquette d'expédition dans la pochette d'expédition",
+    "envelope_4": "Retirez le sceau du sachet et placez le sachet sur l'enveloppe.",
+    "envelope_5": "Collez la pochette sur l'enveloppe",
+    "envelope_6": "Remettez l'enveloppe au greffier",
+    "package_1": "Insérez vos marchandises à l'intérieur du colis",
+    "package_2": "Retirez le sceau collant pour sécuriser vos marchandises",
+    "package_3": "Placez l'étiquette d'expédition dans la pochette d'expédition",
+    "package_4": "Retirez le sceau adhésif pour sécuriser l'étiquette d'expédition",
+    "package_5": "Collez la pochette sur le paquet",
+    "package_6": "Remettez l'enveloppe au greffier"
+  },
+  "Support": {
+    "Technical": "Soutien technique",
+    "Customer": "Service à la clientèle"
+  },
+  "Dropoff": {
+    "Barcode": "Numéro de code barre",
+    "Manual": "Saisie manuelle",
+    "Scan": "Entrée de numérisation",
+    "OR": "OU",
+    "EntrerTheLast": "Entrez le dernier code-barres sur l'étiquette d'expédition",
+    "ScanTheLast": "Scannez le dernier code-barres sur l'étiquette d'expédition",
+    "EnterThePiece": "Entrez l'identifiant des pièce après '(J)'",
+    "ScanTheLastBarcode": "Scannez le dernier code-barres",
+    "Complete": "Dépôt terminé",
+    "WeDont": "Nous ne profitons pas des abandons, votre avis sur Google nous aide à grandir. Scannez le code QR pour faire un avis",
+    "PleaseGive": "Veuillez remettre votre colis ou enveloppe au greffier"
+  },
+  "admin": {
+    "SignOut": "Déconnexion",
+    "Kiosks": "Kiosques",
+    "Users": "Usagers"
+  }
+}

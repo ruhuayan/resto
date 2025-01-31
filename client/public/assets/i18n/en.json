@@ -1,0 +1,131 @@
+{
+  "common": {
+    "Required": "Required Information",
+    "postalCode": "Postal Code",
+    "City": "City",
+    "Country": "Country",
+    "From": "From",
+    "To": "To",
+    "Close": "Close",
+    "Next": "Next"
+  },
+  "login": {
+    "username": "User Name",
+    "password": "Password",
+    "signin": "Sign in"
+  },
+  "profile": {
+    "ChangePassword": "Change Password",
+    "username": "User Name",
+    "OldPassword": "Old Password",
+    "NewPassword": "New Password",
+    "Save": "Save"
+  },
+  "shipmentType" : {
+    "select": "Select Type",
+    "envelop": "ENVELOPE",
+    "package": "PACKAGE",
+    "docuOnly": "Documents Only"
+  },
+  "destination": {
+    "select": "Press to Choose Destination",
+    "USA": "USA"
+  },
+  "rateRequest": {
+    "title": "Quick Quote",
+    "Weight": "Weight",
+    "Width": "Width",
+    "Height": "Height",
+    "Length": "Length",
+    "GetRates": "Get Rates",
+    "Verification": "Verification Code (Ask the Clerk) *",
+    "Reset": "Reset",
+    "Next": "Next"
+  },
+  "rateBox": {
+    "Estimated": "Estimated Transit Time",
+    "Days": "Days Shipping"
+  },
+  "shippingDetails": {
+    "title": "Shipping Details",
+    "shipper": {
+      "fullName": "Your Name",
+      "addressLine1": "Your Home Address Line 1",
+      "addressLine2": "Your Home Address Line 2",
+      "cityName": "Your City",
+      "phone": "Your Phone Number",
+      "email": "Your Email (for tracking #)"
+    },
+    "receiver": {
+      "fullName": "Recipient Name",
+      "countryCode": "Shipping Country",
+      "addressLine1": "Shipping Address Line 1",
+      "addressLine2": "Shipping Address Line 2",
+      "phone": "Phone Number(recipient)"
+    }
+  },
+  "customsInvoice": {
+    "title": "Customs Invoice",
+    "ParcelCurrentValue": "Parcel Current Value",
+    "Quantity": "Quantity",
+    "Where": "Where was the item made",
+    "ProductDescription": "Product Description (be specific of contents for customs)",
+    "WhatIsReason": "What is the reason for the export",
+    "PressForOptions": "Press for Options",
+    "Remove": "Remove",
+    "Add": "Add an Item",
+    "TotalValue": "Total Value",
+    "PressTheButton": "Press the Button Bellow",
+    "Iconfirm": "I confirm I have read and understood the both Terms & Conditions."
+  },
+  "payment": {
+    "AcceptPay": "Accept & Pay",
+    "SecureYourRate": "Secure your rate",
+    "note": "DHL prices can change every 10 minutes. Finish your payment to secure your rate.",
+    "HappyClients": "Happy Clients",
+    "SafeTransaction": "Safe Transaction",
+    "SecureShipment": "Secure Shipment",
+    "PleaseUse": "Please use the payment machine",
+    "located": "located to your right",
+    "KindlyAttach": "Kindly attach the first label on the shipment",
+    "andRetain": "and retain the second label for your records",
+    "Complete": "Complete"
+  },
+  "shipment": {
+    "ShipmentTracking": "Shipment Tracking Number",
+    "envelope_1": "Insert your document inside the envelope",
+    "envelope_2": "Remove the seal to protect your documents",
+    "envelope_3": "Place Shipping Label Inside Shipping Pouch",
+    "envelope_4": "Remove pouch seal and place pouch on envelope",
+    "envelope_5": "Stick the pouch on the envelope",
+    "envelope_6": "Give the envelope to the clerk",
+    "package_1": "Insert your goods inside the package",
+    "package_2": "Remove the sticky seal to secure your goods",
+    "package_3": "Place Shipping Label Inside Shipping Pouch",
+    "package_4": "Remove the sticky seal to secure the shipping label",
+    "package_5": "Stick the pouch on the package",
+    "package_6": "Give the package to the clerk"
+  },
+  "Support": {
+    "Technical": "Technical Support",
+    "Customer": "Customer Service"
+  },
+  "Dropoff": {
+    "Barcode": "Barcode Number",
+    "Manual": "Manual Entry",
+    "Scan": "Scan Entry",
+    "OR": "OR",
+    "EntrerTheLast": "Enter the last barcode on the shipment label",
+    "ScanTheLast": "Scan the last barcode on the shipment label",
+    "EnterThePiece": "Enter the piece ID starting after '(J)'",
+    "ScanTheLastBarcode": "Scan the last barcode",
+    "Complete": "Drop Off Complete",
+    "WeDont": "We don't profit from drop-offs, your review on Google helps us grow. Scan the QR code to make a review",
+    "PleaseGive": "Please give your package or envelope to the clerk"
+  },
+  "admin": {
+    "SignOut": "Sign Out",
+    "Kiosks": "Kiosks",
+    "Users": "Users"
+  }
+}

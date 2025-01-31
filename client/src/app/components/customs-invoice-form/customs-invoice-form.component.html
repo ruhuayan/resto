@@ -1,0 +1,114 @@
+<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="items" formGroupName="lineItems">
+		<div class="row g-3 p-2 mt-3 item"
+					*ngFor="let item of items; let i = index; let isLast=last; trackBy: trackByIndex"
+					formGroupName="{{i}}">
+			<div class="col-md-4 col-sm-12">
+				<label class="form-label h3">{{ "customsInvoice.ParcelCurrentValue" | translate}} *</label>
+				<input
+					class="form-control"
+					type="number"
+					formControlName="price"
+					min="1"
+					max="9999"
+					placeholder="(Example 126$)"
+					aria-label="(Example 126$)"
+					required
+				/>
+			</div>
+			<div class="col-md-2 col-sm-12">
+				<label class="form-label h3">{{ "customsInvoice.Quantity" | translate}} *</label>
+				<input
+					class="form-control"
+					type="number"
+					formControlName="quantity"
+					min="1"
+					max="9999"
+					placeholder="{{ 'customsInvoice.Quantity' | translate}}"
+					aria-label="Quantity"
+					required
+				/>
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<label class="form-label h3">{{ "customsInvoice.Where" | translate}}? *</label>
+				<div class="col-12">
+					<app-dropdown placeholder="{{ 'common.Country' | translate}}" 
+						[options]="countries"	
+						formControlName="manufacturerCountry" 
+						[required]="true"
+					/>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<label class="form-label h3">{{ 'customsInvoice.ProductDescription' | translate }} *</label>
+				<input
+					class="form-control"
+					type="text"
+					formControlName="description"
+					maxlength="500"
+					placeholder="(Example: Iphone 14+ 64gb...)"
+					aria-label="Product Description"
+					required
+				/>
+			</div>
+			<div class="col-md-8">
+				<label class="form-label h3">{{ 'customsInvoice.WhatIsReason' | translate }}? *</label>
+				<div class="col-12">
+					<select
+						formControlName="exportReasonType"
+						class="form-select"
+						required
+					>
+						<option value="" disabled selected>{{ 'customsInvoice.PressForOptions' | translate }}</option>
+						<option
+							*ngFor="let r of reasons;"
+							[ngValue]="r.value"
+						>
+							{{ r.name }}
+						</option>
+					</select>
+				</div>
+			</div>
+      <div class="col-md-3 d-flex text-end align-items-end">
+				<div class="col-12" *ngIf="!isLast">
+					<button
+						type="button"
+						class="btn btn-danger btn-lg"
+						(click)="removeItem(i)"
+					>
+						<span>{{ 'customsInvoice.Remove' | translate }} </span><span>-</span>
+					</button>
+				</div>
+				<div class="col-12" *ngIf="isLast">
+					<button
+						type="button"
+						class="btn btn-danger btn-lg"
+						(click)="addItem()"
+					>
+						<span>{{ 'customsInvoice.Add' | translate }} </span><span>+</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row px-4 pt-1">
+		<div class="col-md-6"><label>* {{ 'common.required' | translate }}</label></div>
+		<div class="offset-md-2 col-md-3 text-end px-0 pt-1">
+			<span class="fs-4">{{ 'customsInvoice.TotalValue' | translate }}: {{ totalValue }}$</span>
+		</div>
+	</div>
+	<div class="row g-1 px-3 align-items-end">
+    <div class="col-md-6">
+      <app-terms formControlName="accept" />
+    </div>
+		<div class="offset-md-2 col-md-3 text-end">
+			<button
+				type="submit"
+				class="btn btn-danger rounded-pill w-50 btn-lg"
+				[disabled]="!form.valid"
+			>
+				{{ 'common.Next' | translate }}
+			</button>
+		</div>
+	</div>
+</form>

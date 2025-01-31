@@ -1,0 +1,33 @@
+<form class="row" [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="col-md-5 offset-md-6 px-3 mb-2 verification" [ngClass]="{packages: packages && packages > 1}" *ngIf="isParcelPackage">
+		<input
+			class="form-control"
+			type="text"
+			formControlName="verification"
+			placeholder="{{ 'rateRequest.Verification' | translate }}"
+			aria-label="Verification"
+			pattern="klickship"
+		/>
+	</div>
+	<div class="row mb-3 mt-2">
+		<app-rate-box
+			[ngClass]="{enabled: form.valid}"
+			class="col-md-4 offset-md-4 text-center"
+			[rate]="rateResponse?.rate"
+			[estimatedTransitDays]="rateResponse?.estimatedTransitDays"
+			(click)="rateBoxClicked()" />
+
+		<div class="d-flex align-items-end rate-next">
+			<button type="button" class="btn btn-danger btn-lg" (click)="onReset()">
+				{{ 'rateRequest.Reset' | translate }}
+			</button>
+			<button
+				type="submit"
+				class="btn btn-danger btn-lg mx-2"
+				[disabled]="!form.valid"
+			>
+			{{ 'rateRequest.Next' | translate }}
+			</button>
+		</div>
+	</div>
+</form>

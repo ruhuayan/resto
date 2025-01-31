@@ -1,0 +1,8 @@
+*/node_modules/
+.env
+.vscode/
+.angular/
+.DS_STORE
+test/
+access.log
+.codegpt
