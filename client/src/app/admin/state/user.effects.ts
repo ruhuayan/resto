@@ -206,6 +206,28 @@ export class UserEffects {
 		)
 	);
 
+	getTables$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(UserActions.getTables),
+			switchMap(() => {
+				return this.store.select(userSelector).pipe(
+					take(1),
+					filter(user => !!user && !!user.token),
+					mergeMap((user) => {
+						return this.userService.getTables(user?.token || '').pipe(
+							mergeMap((res: any) => {
+								if (res.error) {
+									return of(ParcelActions.setError({ error: res.message}));
+								}
+								return of(UserActions.getTablesSuccess({tables: res}));
+							}),
+							catchError((error) => this.interceptError(error))
+						);
+					})
+				);
+			})
+		)
+	);
 	constructor() {}
 
 	private interceptError(err: any) {

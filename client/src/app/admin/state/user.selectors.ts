@@ -33,10 +33,10 @@ export const usersSelector = createSelector(
   }
 );
 
-export const transactioinsSelector = createSelector(
+export const tablesSelector = createSelector(
   userFeatureSelector,
   (feature) => {
-    return feature.transactions;
+    return feature.tables;
   }
 );
 

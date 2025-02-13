@@ -1,6 +1,3 @@
-import { CustomerDetails } from "../models/customerDetails";
-import { ParcelType } from "../models/shared.models";
-
 export enum UserRole {
   ADMIN = 'ADMIN',
   USER = 'USER',
@@ -14,26 +11,24 @@ export interface User {
   role?: UserRole;
 }
 
-export interface Area {
-  id: string;
-  name: string;
-  description: string;
-}
-
 export interface PasswordPayload {
   username: string;
   password: string;
   newPassword: string;
   token: string;
 }
-export interface Transaction {
-  // _id: string;
-  machineId: string;
-  shipmentTrackingNumber: string;
-  price: number;
-  parcelType: ParcelType;
-  shipperDetails: CustomerDetails;
-  receiverDetails: CustomerDetails;
-  details: string;
-  createdAt: Date;
+
+export interface Area {
+  id: string;
+  name: string;
+  description: string;
+}
+
+export interface Table {
+  id: string;
+  name: string;
+  description: string;
+  capacity: number;
+  areaId: number;
+  areaName?: string;
 }

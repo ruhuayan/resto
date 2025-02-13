@@ -33,11 +33,11 @@ export class UserService {
 		return this.http.delete<any>(`${API_URL}/users/${id}`,  this.getOptions(token));
 	}
 
-	getTransactioins(token: string) {
-		return this.http.get<any>(`${API_URL}/shipments`,  this.getOptions(token));
+	getTables(token: string) {
+		return this.http.get<any>(`${API_URL}/tables`,  this.getOptions(token));
 	}
-	deleteTransaction(id: string, token: string) {
-		return this.http.delete<any>(`${API_URL}/shipments/${id}`,  this.getOptions(token));
+	deleteTable(id: string, token: string) {
+		return this.http.delete<any>(`${API_URL}/tables/${id}`,  this.getOptions(token));
 	}
 
 	getAreas(token: string) {

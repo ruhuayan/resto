@@ -4,8 +4,8 @@ import { Observable, take } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { UserActions } from '../state/user.actions';
-import { areasSelector } from '../state/user.selectors';
-import { Area } from '../admin.models';
+import { areasSelector, tablesSelector } from '../state/user.selectors';
+import { Area, Table } from '../admin.models';
 import { ModalComponent } from '../../components/modal/modal.component';
 
 @Component({
@@ -19,21 +19,21 @@ import { ModalComponent } from '../../components/modal/modal.component';
 			display: flex;
 			flex: 1;
 		}
-		.ag-grid {
-			flex: 1;
-		}
 	`
 })
 export class TablesComponent {
 	areaToDelete: Area | null = null;
 	areas$: Observable<Area[] | null>;
+	tables$: Observable<Table[] | null>;
 	private store = inject(Store);
 	private locale = inject(LOCALE_ID);
 	private router = inject(Router);
 	private activatedRoute = inject(ActivatedRoute);
 	constructor() {
 		this.store.dispatch(UserActions.getAreas());
+		this.store.dispatch(UserActions.getTables());
 		this.areas$ = this.store.select(areasSelector);
+		this.tables$ = this.store.select(tablesSelector);
 	}
 
 	addArea() {

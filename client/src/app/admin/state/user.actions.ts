@@ -1,5 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { Area, PasswordPayload, Transaction, User } from '../admin.models';
+import { Area, PasswordPayload, Table, User } from '../admin.models';
 
 export const UserActions = createActionGroup({
   source: 'Users',
@@ -10,8 +10,11 @@ export const UserActions = createActionGroup({
     'Logout': emptyProps(),
     'Get Users': emptyProps(),
     'Get Users Success': props<{ users: User[] }>(),
-    'Get Transactions': emptyProps(),
-    'Get Transactions Success': props<{ transactions: Transaction[] }>(),
+    'Get Tables': emptyProps(),
+    'Get Tables Success': props<{ tables: Table[] }>(),
+    'Create Table': props<{ table: Readonly<Table> }>(),
+    'Edit Table': props<{ table: Readonly<Table> }>(),
+    'Delete Table': props<{ id: Readonly<string> }>(),
     'Get Areas': emptyProps(),
     'Get Areas Success': props<{ areas: Area[] }>(),
     'Create Area': props<{ area: Readonly<Area> }>(),
@@ -20,6 +23,5 @@ export const UserActions = createActionGroup({
     'Create User': props<{ user: User }>(),
     'Edit User': props<{ user: Readonly<User> }>(),
     'Delete User': props<{ id: Readonly<string> }>(),
-    'Delete Transaction': props<{ id: Readonly<string> }>(),
   },
 });
