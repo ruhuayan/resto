@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { PasswordPayload, User } from "../admin.models";
+import { Area, PasswordPayload, User } from "../admin.models";
 import { API_URL } from "../../models/shared.models";
 
 @Injectable({
@@ -40,11 +40,14 @@ export class UserService {
 		return this.http.delete<any>(`${API_URL}/shipments/${id}`,  this.getOptions(token));
 	}
 
-	getKiosks(token: string) {
-		return this.http.get<any>(`${API_URL}/machines`,  this.getOptions(token));
+	getAreas(token: string) {
+		return this.http.get<any>(`${API_URL}/areas`,  this.getOptions(token));
 	}
-	deleteKiosk(id: string, token: string) {
-		return this.http.delete<any>(`${API_URL}/machines/${id}`,  this.getOptions(token));
+	createArea(area: Area, token: string) {
+		return this.http.post<any>(`${API_URL}/areas`, area, this.getOptions(token));
+	}
+	deleteArea(id: string, token: string) {
+		return this.http.delete<any>(`${API_URL}/areas/${id}`,  this.getOptions(token));
 	}
 
 	private getOptions(token: string) {

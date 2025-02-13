@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { Kiosk, Transaction, User } from "../admin.models";
+import { Area, Transaction, User } from "../admin.models";
 import { UserActions } from "./user.actions";
 
 export interface State {
@@ -7,7 +7,7 @@ export interface State {
   loading: boolean;
   users: User[];
   transactions: Transaction[];
-  kiosks: Kiosk[];
+  areas: Area[];
 }
 
 export const initState: State = {
@@ -15,7 +15,7 @@ export const initState: State = {
   loading: false,
   users: [],
   transactions: [],
-  kiosks: [],
+  areas: [],
 }
 
 export const userReducer = createReducer(initState,
@@ -26,8 +26,8 @@ export const userReducer = createReducer(initState,
   on(UserActions.getUsersSuccess, (state, { users }) => ({...state, users: users, loading: false })),
   on(UserActions.getTransactions, (state) => ({...state, loading: true })),
   on(UserActions.getTransactionsSuccess, (state, { transactions }) => ({...state, transactions, loading: false })),
-  on(UserActions.getKiosks, (state) => ({...state, loading: true })),
-  on(UserActions.getKiosksSuccess, (state, { kiosks }) => ({...state, kiosks, loading: false })),
+  on(UserActions.getAreas, (state) => ({...state, loading: true })),
+  on(UserActions.getAreasSuccess, (state, { areas }) => ({...state, areas, loading: false })),
   on(UserActions.createUser, (state, { user }) => ({...state, loading: true })),
   on(UserActions.editUser, (state, { user }) => ({...state, loading: true })),
 );

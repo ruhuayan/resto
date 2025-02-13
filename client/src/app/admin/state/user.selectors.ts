@@ -40,9 +40,9 @@ export const transactioinsSelector = createSelector(
   }
 );
 
-export const kiosksSelector = createSelector(
+export const areasSelector = createSelector(
   userFeatureSelector,
   (feature) => {
-    return feature.kiosks;
+    return feature.areas;
   }
 );

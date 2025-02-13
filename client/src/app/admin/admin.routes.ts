@@ -3,10 +3,9 @@ import { SettingsComponent } from "./settings/settings.component";
 import { AdminComponent } from "./admin.component";
 import { UsersComponent } from "./users/users.component";
 import { TablesComponent } from "./tables/tables.component";
-import { KiosksComponent } from "./kiosks/kiosks.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { EditUserComponent } from "./users/edit-user.component";
-import { EditKioskComponent } from "./kiosks/edit-kiosk.component";
+import { EditAreaComponent } from "./tables/edit-area.component";
 
 export const ADMIN_ROUTES: Route[] = [
   {
@@ -29,21 +28,27 @@ export const ADMIN_ROUTES: Route[] = [
       {
         path: 'tables',
         component: TablesComponent,
-      },
-      {
-        path: 'kiosks',
-        component: KiosksComponent,
         children: [
           {
+            path: 'area-add',
+            component: EditAreaComponent,
+            data: { mode: 'create' }
+          },
+          {
+            path: 'area-edit',
+            component: EditAreaComponent,
+            data: { mode: 'edit' }
+          },
+          {
             path: 'add',
-            component: EditKioskComponent,
+            component: EditAreaComponent,
             data: { mode: 'create' }
           },
           {
             path: 'edit',
-            component: EditKioskComponent,
+            component: EditAreaComponent,
             data: { mode: 'edit' }
-          }
+          },
         ]
       },
       {

@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db');
 
 module.exports = (app) => {
-  router.use('/api', router);
+  app.use('/api', router);
 };
 
 router.get('/test', async (req, res) => {

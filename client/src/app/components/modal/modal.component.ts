@@ -25,6 +25,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 export class ModalComponent implements OnInit {
 	@Input() allowClose = true;
 	@Input() title = '';
+	@Input() showFooter = true;
 	@Output() close = new EventEmitter();
 	ngOnInit(): void {}
 

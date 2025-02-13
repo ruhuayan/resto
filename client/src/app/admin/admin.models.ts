@@ -8,10 +8,16 @@ export enum UserRole {
 
 export interface User {
   username: string;
-  // email?: string;
+  email?: string;
   password?: string;
   token?: string;
   role?: UserRole;
+}
+
+export interface Area {
+  id: string;
+  name: string;
+  description: string;
 }
 
 export interface PasswordPayload {
@@ -30,10 +36,4 @@ export interface Transaction {
   receiverDetails: CustomerDetails;
   details: string;
   createdAt: Date;
-}
-
-export interface Kiosk {
-    _id: string;
-  address: CustomerDetails;
-  openingHours: string;
 }

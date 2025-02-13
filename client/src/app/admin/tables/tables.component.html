@@ -1,9 +1,38 @@
-<ag-grid-angular
-  class="ag-grid"
-  [pagination]="pagination"
-  [paginationPageSize]="paginationPageSize"
-  [paginationPageSizeSelector]="paginationPageSizeSelector"
-  [rowData]="rowData$ | async"
-  [columnDefs]="colDefs"
-  [defaultColDef]="defaultColDef"
-/>
+<div class="row w-100">
+  <div class="col-md-3 border">
+    <h4 class="d-flex justify-content-between border-bottom pb-2 mb-0">Area 
+      <button class="fs-5 btn-outline" (click)="addArea()">+ Add</button>
+    </h4>
+    <ng-content *ngIf="(areas$ | async)?.length">
+      <div class="d-flex text-muted pt-3 align-items-center justify-content-between" *ngFor="let area of (areas$ | async)">
+        <div class="d-flex ">
+          <strong class="text-gray-dark">{{area.name}}</strong>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-outline-secondary" (click)="editArea(area)">
+            <img src="assets/images/edit.svg" alt="Edit" width="16" height="16" />
+          </button>
+          <button type="button" class="btn btn-outline-secondary" (click)="deleteArea(area)">
+            <img src="assets/images/trash.svg" alt="Delete" width="16" height="16" />
+          </button>
+        </div>
+      </div>
+    </ng-content>
+    <ng-content *ngIf="!(areas$ | async)?.length">
+      <div class="d-flex text-muted pt-3 align-items-center justify-content-between">
+        <div class="d-flex ">
+          <strong class="text-gray-dark">No Area created</strong>
+        </div>
+      </div>
+    </ng-content>
+  </div>
+  <div class="col-md-9">No Table</div>
+</div>
+<router-outlet />
+<app-modal title="Confirm" [allowClose]="false" *ngIf="areaToDelete">
+  <div body>Are you sure to delete Area {{areaToDelete.name}} ?</div>
+  <div footer>
+    <button type="button" class="btn btn-primary mx-2" (click)="delete(areaToDelete)">Yes</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="cancelDelete()">No</button>
+  </div>
+</app-modal>

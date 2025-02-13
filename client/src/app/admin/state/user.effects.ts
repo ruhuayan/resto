@@ -87,43 +87,20 @@ export class UserEffects {
 		)
 	);
 
-	getTransactions$ = createEffect(() =>
+	getAreas$ = createEffect(() =>
 		this.actions$.pipe(
-			ofType(UserActions.getTransactions),
+			ofType(UserActions.getAreas),
 			switchMap(() => {
 				return this.store.select(userSelector).pipe(
 					take(1),
 					filter(user => !!user && !!user.token),
 					mergeMap((user) => {
-						return this.userService.getTransactioins(user?.token || '').pipe(
+						return this.userService.getAreas(user?.token || '').pipe(
 							mergeMap((res: any) => {
 								if (res.error) {
 									return of(ParcelActions.setError({ error: res.message}));
 								}
-								return of(UserActions.getTransactionsSuccess({transactions: res}));
-							}),
-							catchError((error) => this.interceptError(error))
-						);
-					})
-				);
-			})
-		)
-	);
-
-	getKiosks$ = createEffect(() =>
-		this.actions$.pipe(
-			ofType(UserActions.getKiosks),
-			switchMap(() => {
-				return this.store.select(userSelector).pipe(
-					take(1),
-					filter(user => !!user && !!user.token),
-					mergeMap((user) => {
-						return this.userService.getKiosks(user?.token || '').pipe(
-							mergeMap((res: any) => {
-								if (res.error) {
-									return of(ParcelActions.setError({ error: res.message}));
-								}
-								return of(UserActions.getKiosksSuccess({kiosks: res}));
+								return of(UserActions.getAreasSuccess({areas: res}));
 							}),
 							catchError((error) => this.interceptError(error))
 						);
@@ -142,7 +119,9 @@ export class UserEffects {
 						if (res.error) {
 							return of(ParcelActions.setError({ error: res.message}));
 						}
-						return of(ParcelActions.setAlert({alert: { type: 'success', message : 'User created' }}));
+						return from([
+							ParcelActions.setAlert({alert: { type: 'success', message : 'User created' }}),
+						]);
 					}),
 					catchError((error) => this.interceptError(error))
 				);
@@ -172,6 +151,61 @@ export class UserEffects {
 			})
 		)
 	);
+
+	createArea$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(UserActions.createArea),
+			switchMap((action) => {
+				return this.store.select(userSelector).pipe(
+					take(1),
+					filter(user => !!user && !!user.token),
+					mergeMap((user) => {
+						return this.userService.createArea(action.area, user?.token || '').pipe(
+							mergeMap((res: any) => {
+								if (res.error) {
+									return of(ParcelActions.setError({ error: res.message}));
+								}
+								this.router.navigateByUrl('/admin/tables');
+								return from([
+									ParcelActions.setAlert({alert: { type: 'success', message : 'Area Created' }}),
+									UserActions.getAreas(),
+								]);
+							}),
+							catchError((error) => this.interceptError(error))
+						);
+					})
+				);
+			})
+		)
+	);
+
+	deleteArea$ = createEffect(() =>
+		this.actions$.pipe(
+			ofType(UserActions.deleteArea),
+			switchMap((action) => {
+				return this.store.select(userSelector).pipe(
+					take(1),
+					filter(user => !!user && !!user.token),
+					mergeMap((user) => {
+						return this.userService.deleteArea(action.id, user?.token || '').pipe(
+							mergeMap((res: any) => {
+								if (res.error) {
+									return of(ParcelActions.setError({ error: res.message}));
+								}
+								this.router.navigateByUrl('/admin/tables');
+								return from([
+									ParcelActions.setAlert({alert: { type: 'success', message : 'Area deleted' }}),
+									UserActions.getAreas(),
+								]);
+							}),
+							catchError((error) => this.interceptError(error))
+						);
+					})
+				);
+			})
+		)
+	);
+
 	constructor() {}
 
 	private interceptError(err: any) {
